@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FetchDataRequest } from "../redux-components/action/cartaction";
 import { connect } from "react-redux";
+import Item from "./Item";
 
 /*connect- which is used to connect react component to redux*/
 
@@ -14,7 +15,7 @@ function Shop({ Products, FetchDataRequest }) {
   return (
     <div>
       {Products.map((e) => {
-        return <li>{e.title}</li>;
+        return <Item image={e.image} price={e.price} title={e.title}/>
       })}
     </div>
   );

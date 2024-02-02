@@ -1,0 +1,11 @@
+.Item{
+    width: 175px;
+
+}
+.Item p{
+    margin:6px 0px;
+}
+.price{
+    display: flex;
+    gap: 20px;
+}

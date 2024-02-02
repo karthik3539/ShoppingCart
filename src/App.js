@@ -4,11 +4,12 @@ import Navbar from "./components/navbar";
 import Shop from "./components/shop";
 import Cart from "./components/cart";
 
+
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Shop />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
