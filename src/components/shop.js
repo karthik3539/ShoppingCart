@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
-import { FetchDataRequest } from "../redux-components/action/cartaction";
+import {
+  FetchDataRequest,
+  addtocart,
+} from "../redux-components/action/cartaction";
 import { connect } from "react-redux";
-import Item from "./Item";
+import MediaCard from "./Item";
 
 /*connect- which is used to connect react component to redux*/
 
-function Shop({ Products, FetchDataRequest }) {
+function Shop({ Products, FetchDataRequest, addtocart }) {
   useEffect(() => {
     FetchDataRequest();
   }, [FetchDataRequest]);
@@ -13,9 +16,18 @@ function Shop({ Products, FetchDataRequest }) {
   console.log(Products);
 
   return (
-    <div>
-      {Products.map((e) => {
-        return <Item image={e.image} price={e.price} title={e.title}/>
+    <div className="product-list">
+      {Products.map((item) => {
+        return (
+          <MediaCard
+            image={item.image}
+            price={item.price}
+            title={item.title}
+            handleAddtocart={(item) => {
+              addtocart(item);
+            }}
+          />
+        );
       })}
     </div>
   );
@@ -27,4 +39,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { FetchDataRequest })(Shop);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    FetchDataRequest: () => dispatch(FetchDataRequest()),
+    addtocart: (item) => dispatch(addtocart(item)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);

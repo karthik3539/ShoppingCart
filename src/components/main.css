@@ -1,0 +1,42 @@
+.product-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.MuiPaper-root {
+  min-width: 345px;
+  margin: 0 20px 20px 0;
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: left;
+}
+
+.MuiTypography-root {
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  min-height: 42px;
+  max-height: 42px;
+  font-size: 16px !important;
+}
+.Basket {
+  position: relative;
+}
+
+.cartcount {
+  position: absolute;
+  width: 21px;
+  background: #fff;
+  border-radius: 50px;
+  height: 19px;
+  font-size: 11px;
+  right: -6px;
+  font-weight: 700;
+
+  line-height: 16px;
+}

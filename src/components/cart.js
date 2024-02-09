@@ -1,7 +1,20 @@
 import React from "react";
+import { connect } from "react-redux";
 
-function Cart() {
-  return <div>cart</div>;
+function Cart({ items }) {
+  return (
+    <div>
+      {items.map((i) => {
+        return <li>{i.title}</li>;
+      })}
+    </div>
+  );
 }
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    items: state.cartReducer.items,
+  };
+};
+
+export default connect(mapStateToProps)(Cart);

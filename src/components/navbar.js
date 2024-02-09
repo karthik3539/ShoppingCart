@@ -1,8 +1,9 @@
 import React from "react";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-function Navbar() {
+function Navbar({ noofProductsinCart }) {
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-primary">
@@ -32,6 +33,7 @@ function Navbar() {
 
           <div className="Basket">
             <ShoppingBasketOutlinedIcon />
+            <span className="cartcount">{noofProductsinCart}</span>
           </div>
         </div>
       </nav>
@@ -39,4 +41,10 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    noofProductsinCart: state.cartReducer.noofProductsinCart,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);
